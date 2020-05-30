@@ -1,0 +1,2601 @@
+======================================================================================================
+RULE ID: node_insecure_random_generator
+OWASP: A9: Using Components with Known Vulnerabilities
+CWE: CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+DESCRIPTION: crypto.pseudoRandomBytes()/Math.random() is a cryptographically weak random number generator.
+SEVERITY: WARNING
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 42 - 53
+Line Number(s): 6359
+Match String: 					if (rnd <= 0x02) rnd = 0x2000000 + (Math.random()*0x1000000)|0;
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 20 - 31
+Line Number(s): 6426
+Match String: 		return ( 65280 * Math.random() + 255 * Math.random() ) / 65535;
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 42 - 53
+Line Number(s): 6426
+Match String: 		return ( 65280 * Math.random() + 255 * Math.random() ) / 65535;
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 28 - 39
+Line Number(s): 6434
+Match String: 		return low + Math.floor( Math.random() * ( high - low + 1 ) );
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 16 - 27
+Line Number(s): 6442
+Match String: 		return low + Math.random() * ( high - low );
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 26 - 37
+Line Number(s): 6450
+Match String: 		return range * ( 0.5 - Math.random() );
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 97 - 108
+Line Number(s): 15504
+Match String: 	this.material = material !== undefined ? material : new THREE.ParticleSystemMaterial( { color: Math.random() * 0xffffff } );
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 92 - 103
+Line Number(s): 15534
+Match String: 	this.material = material !== undefined ? material : new THREE.LineBasicMaterial( { color: Math.random() * 0xffffff } );
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 92 - 103
+Line Number(s): 15567
+Match String: 	this.material = material !== undefined ? material : new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } );
+
+
+File: /src/routes/captcha.js
+Match Position: 33 - 44
+Line Number(s): 13
+Match String:     var firstTerm = Math.floor((Math.random() * 10) + 1)
+
+
+File: /src/routes/captcha.js
+Match Position: 34 - 45
+Line Number(s): 14
+Match String:     var secondTerm = Math.floor((Math.random() * 10) + 1)
+
+
+File: /src/routes/captcha.js
+Match Position: 33 - 44
+Line Number(s): 15
+Match String:     var thirdTerm = Math.floor((Math.random() * 10) + 1)
+
+
+File: /src/routes/captcha.js
+Match Position: 47 - 58
+Line Number(s): 17
+Match String:     var firstOperator = operators[Math.floor((Math.random() * 3))]
+
+
+File: /src/routes/captcha.js
+Match Position: 48 - 59
+Line Number(s): 18
+Match String:     var secondOperator = operators[Math.floor((Math.random() * 3))]
+
+
+File: /src/lib/insecurity.js
+Match Position: 51 - 62
+Line Number(s): 33
+Match String: exports.denyAll = () => expressJwt({ secret: '' + Math.random() })
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 42 - 53
+Line Number(s): 6359
+Match String: 					if (rnd <= 0x02) rnd = 0x2000000 + (Math.random()*0x1000000)|0;
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 20 - 31
+Line Number(s): 6426
+Match String: 		return ( 65280 * Math.random() + 255 * Math.random() ) / 65535;
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 42 - 53
+Line Number(s): 6426
+Match String: 		return ( 65280 * Math.random() + 255 * Math.random() ) / 65535;
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 28 - 39
+Line Number(s): 6434
+Match String: 		return low + Math.floor( Math.random() * ( high - low + 1 ) );
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 16 - 27
+Line Number(s): 6442
+Match String: 		return low + Math.random() * ( high - low );
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 26 - 37
+Line Number(s): 6450
+Match String: 		return range * ( 0.5 - Math.random() );
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 97 - 108
+Line Number(s): 15504
+Match String: 	this.material = material !== undefined ? material : new THREE.ParticleSystemMaterial( { color: Math.random() * 0xffffff } );
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 92 - 103
+Line Number(s): 15534
+Match String: 	this.material = material !== undefined ? material : new THREE.LineBasicMaterial( { color: Math.random() * 0xffffff } );
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 92 - 103
+Line Number(s): 15567
+Match String: 	this.material = material !== undefined ? material : new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } );
+
+======================================================================================================
+RULE ID: node_password
+OWASP: A3: Sensitive Data Exposure
+CWE: CWE-798: Use of Hard-coded Credentials
+DESCRIPTION: A hardcoded password in plain text is identified. Store it properly in an environment variable.
+SEVERITY: ERROR
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 7 - 54
+Line Number(s): 162
+Match String:       password: 'EinBelegtesBrotMitSchinkenSCHINKEN!',
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 7 - 50
+Line Number(s): 187
+Match String:       password: '0Y8rMnww$*9VFYE§59-!Fg1L6t&6lB'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 30
+Line Number(s): 221
+Match String:     const password = '123456'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 30
+Line Number(s): 265
+Match String:     const password = '123456'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 30
+Line Number(s): 293
+Match String:     const password = '123456'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 30
+Line Number(s): 321
+Match String:     const password = '123456'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 59
+Line Number(s): 349
+Match String:     const password = 'EinBelegtesBrotMitSchinkenSCHINKEN!'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 30
+Line Number(s): 377
+Match String:     const password = '123456'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 30
+Line Number(s): 411
+Match String:     const password = '123456'
+
+
+File: /src/test/api/addressApiSpec.js
+Match Position: 7 - 27
+Line Number(s): 20
+Match String:       password: 'ncc-1701'
+
+
+File: /src/test/e2e/totpSetupSpec.js
+Match Position: 7 - 54
+Line Number(s): 33
+Match String:       password: 'EinBelegtesBrotMitSchinkenSCHINKEN!',
+
+
+File: /src/test/e2e/totpSetupSpec.js
+Match Position: 85 - 121
+Line Number(s): 45
+Match String:     protractor.beforeEach.login({ email: 'amy@' + config.get('application.domain'), password: 'K1f.....................' })
+
+
+File: /src/test/e2e/registerSpec.js
+Match Position: 89 - 109
+Line Number(s): 17
+Match String:       protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/registerSpec.js
+Match Position: 13 - 30
+Line Number(s): 32
+Match String:             password: 'XSSed',
+
+
+File: /src/test/e2e/registerSpec.js
+Match Position: 64 - 81
+Line Number(s): 77
+Match String:         xhttp.send(JSON.stringify({ email: 'testing@test.com', password: 'pwned', passwordRepeat: 'pwned', role: 'admin' }))
+
+
+File: /src/test/e2e/registerSpec.js
+Match Position: 61 - 90
+Line Number(s): 96
+Match String:         xhttp.send(JSON.stringify({ email: 'uncle@bob.com', password: 'ThereCanBeOnlyOne' }))
+
+
+File: /src/test/e2e/restApiSpec.js
+Match Position: 89 - 109
+Line Number(s): 13
+Match String:       protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/restApiSpec.js
+Match Position: 89 - 109
+Line Number(s): 100
+Match String:       protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/searchSpec.js
+Match Position: 87 - 107
+Line Number(s): 67
+Match String:     protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/searchSpec.js
+Match Position: 87 - 107
+Line Number(s): 77
+Match String:     protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/noSqlSpec.js
+Match Position: 89 - 109
+Line Number(s): 16
+Match String:       protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/noSqlSpec.js
+Match Position: 95 - 118
+Line Number(s): 69
+Match String:     protractor.beforeEach.login({ email: 'mc.safesearch@' + config.get('application.domain'), password: 'Mr. N00dles' })
+
+
+File: /src/test/e2e/noSqlSpec.js
+Match Position: 95 - 118
+Line Number(s): 106
+Match String:     protractor.beforeEach.login({ email: 'mc.safesearch@' + config.get('application.domain'), password: 'Mr. N00dles' })
+
+
+File: /src/test/e2e/profileSpec.js
+Match Position: 85 - 105
+Line Number(s): 12
+Match String:   protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/loginSpec.js
+Match Position: 65 - 85
+Line Number(s): 161
+Match String:         xhttp.send(JSON.stringify({ email: 'admin@juice-sh.op', password: 'admin123', oauth: true }))
+
+
+File: /src/test/e2e/changePasswordSpec.js
+Match Position: 87 - 133
+Line Number(s): 12
+Match String:     protractor.beforeEach.login({ email: 'morty@' + config.get('application.domain'), password: 'focusOnScienceMorty!focusOnScience' })
+
+
+File: /src/test/e2e/changePasswordSpec.js
+Match Position: 88 - 124
+Line Number(s): 33
+Match String:     protractor.beforeEach.login({ email: 'bender@' + config.get('application.domain'), password: 'OhG0dPlease1nsertLiquor!' })
+
+
+File: /src/test/e2e/complainSpec.js
+Match Position: 85 - 105
+Line Number(s): 13
+Match String:   protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/contactSpec.js
+Match Position: 87 - 107
+Line Number(s): 24
+Match String:     protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/contactSpec.js
+Match Position: 89 - 109
+Line Number(s): 49
+Match String:       protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/dataExportSpec.js
+Match Position: 87 - 107
+Line Number(s): 21
+Match String:     protractor.beforeEach.login({ email: 'admun@' + config.get('application.domain'), password: 'admun123' })
+
+
+File: /src/test/e2e/deluxeSpec.js
+Match Position: 85 - 105
+Line Number(s): 11
+Match String:     protractor.beforeEach.login({ email: 'jim@' + config.get('application.domain'), password: 'ncc-1701' })
+
+
+File: /src/test/e2e/deluxeSpec.js
+Match Position: 85 - 105
+Line Number(s): 21
+Match String:     protractor.beforeEach.login({ email: 'jim@' + config.get('application.domain'), password: 'ncc-1701' })
+
+
+File: /src/test/e2e/administrationSpec.js
+Match Position: 87 - 107
+Line Number(s): 10
+Match String:     protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/administrationSpec.js
+Match Position: 87 - 107
+Line Number(s): 21
+Match String:     protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/b2bOrderSpec.js
+Match Position: 85 - 105
+Line Number(s): 10
+Match String:   protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/basketSpec.js
+Match Position: 87 - 107
+Line Number(s): 12
+Match String:     protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
+
+
+File: /src/test/e2e/basketSpec.js
+Match Position: 85 - 105
+Line Number(s): 71
+Match String:     protractor.beforeEach.login({ email: 'jim@' + config.get('application.domain'), password: 'ncc-1701' })
+
+
+File: /src/test/api/userApiSpec.js
+Match Position: 9 - 30
+Line Number(s): 41
+Match String:         password: 'hooooorst'
+
+
+File: /src/test/api/userApiSpec.js
+Match Position: 9 - 30
+Line Number(s): 59
+Match String:         password: 'hooooorst',
+
+
+File: /src/test/api/userApiSpec.js
+Match Position: 9 - 30
+Line Number(s): 81
+Match String:         password: 'hooooorst',
+
+
+File: /src/test/api/userApiSpec.js
+Match Position: 9 - 30
+Line Number(s): 103
+Match String:         password: 'hooooorst',
+
+
+File: /src/test/api/userApiSpec.js
+Match Position: 9 - 30
+Line Number(s): 125
+Match String:         password: 'hooooorst',
+
+
+File: /src/test/api/userApiSpec.js
+Match Position: 11 - 38
+Line Number(s): 144
+Match String:           password: 'does.not.matter'
+
+
+File: /src/test/api/userApiSpec.js
+Match Position: 9 - 53
+Line Number(s): 205
+Match String:         password: '********************************'
+
+
+File: /src/test/api/userApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 216
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/userProfileSpec.js
+Match Position: 7 - 27
+Line Number(s): 19
+Match String:       password: 'ncc-1701'
+
+
+File: /src/test/api/walletApiSpec.js
+Match Position: 7 - 27
+Line Number(s): 18
+Match String:       password: 'ncc-1701'
+
+
+File: /src/test/api/securityAnswerApiSpec.js
+Match Position: 7 - 24
+Line Number(s): 44
+Match String:       password: '12345'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 20
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 37
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 47
+Line Number(s): 54
+Match String:         password: 'i am an awesome accountant'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 71
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 92
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 47
+Line Number(s): 113
+Match String:         password: 'i am an awesome accountant'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 136
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 154
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 47
+Line Number(s): 172
+Match String:         password: 'i am an awesome accountant'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 189
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 210
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 47
+Line Number(s): 231
+Match String:         password: 'i am an awesome accountant'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 47
+Line Number(s): 254
+Match String:         password: 'i am an awesome accountant'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 271
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/quantityApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 288
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/paymentApiSpec.js
+Match Position: 7 - 27
+Line Number(s): 20
+Match String:       password: 'ncc-1701'
+
+
+File: /src/test/api/productReviewApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 104
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/profileImageUploadSpec.js
+Match Position: 9 - 29
+Line Number(s): 25
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/profileImageUploadSpec.js
+Match Position: 9 - 29
+Line Number(s): 51
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/profileImageUploadSpec.js
+Match Position: 9 - 29
+Line Number(s): 94
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/profileImageUploadSpec.js
+Match Position: 9 - 29
+Line Number(s): 119
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 30
+Line Number(s): 27
+Match String:         password: 'kallliiii'
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 13 - 34
+Line Number(s): 36
+Match String:             password: 'kallliiii'
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 7 - 26
+Line Number(s): 52
+Match String:       password: 'ooootto'
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 70
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 52
+Line Number(s): 85
+Match String:         password: 'J6aVjTgOpRs$?5l+Zkq2AYnCE@RF§P'
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 32
+Line Number(s): 100
+Match String:         password: 'Mr. N00dles'
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 45
+Line Number(s): 115
+Match String:         password: 'K1f.....................'
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 56
+Line Number(s): 130
+Match String:         password: 'EinBelegtesBrotMitSchinkenSCHINKEN!'
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 148
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 249
+Match String:         password: 'admin123',
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 265
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/loginApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 286
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/memoryApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 25
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/memoryApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 62
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/memoryApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 88
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/orderHistoryApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 18
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/orderHistoryApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 55
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/orderHistoryApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 72
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/orderHistoryApiSpec.js
+Match Position: 9 - 47
+Line Number(s): 89
+Match String:         password: 'i am an awesome accountant'
+
+
+File: /src/test/api/orderHistoryApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 108
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/orderHistoryApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 128
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/orderHistoryApiSpec.js
+Match Position: 9 - 47
+Line Number(s): 148
+Match String:         password: 'i am an awesome accountant'
+
+
+File: /src/test/api/passwordApiSpec.js
+Match Position: 9 - 30
+Line Number(s): 20
+Match String:         password: 'kunigunde'
+
+
+File: /src/test/api/passwordApiSpec.js
+Match Position: 13 - 34
+Line Number(s): 29
+Match String:             password: 'kunigunde'
+
+
+File: /src/test/api/passwordApiSpec.js
+Match Position: 9 - 105
+Line Number(s): 47
+Match String:         password: 'monkey summer birthday are all bad passwords but work just fine in a long passphrase'
+
+
+File: /src/test/api/passwordApiSpec.js
+Match Position: 9 - 45
+Line Number(s): 93
+Match String:         password: 'OhG0dPlease1nsertLiquor!'
+
+
+File: /src/test/api/deliveryApiSpec.js
+Match Position: 11 - 31
+Line Number(s): 22
+Match String:           password: 'ncc-1701'
+
+
+File: /src/test/api/deliveryApiSpec.js
+Match Position: 11 - 83
+Line Number(s): 51
+Match String:           password: 'mDLx?94T~1CfVfZMzw@sJ9f?s3L6lbMqE70FfI8^54jbNikY5fymx7c!YbJb'
+
+
+File: /src/test/api/deliveryApiSpec.js
+Match Position: 11 - 31
+Line Number(s): 82
+Match String:           password: 'ncc-1701'
+
+
+File: /src/test/api/deliveryApiSpec.js
+Match Position: 11 - 83
+Line Number(s): 110
+Match String:           password: 'mDLx?94T~1CfVfZMzw@sJ9f?s3L6lbMqE70FfI8^54jbNikY5fymx7c!YbJb'
+
+
+File: /src/test/api/deluxeApiSpec.js
+Match Position: 9 - 45
+Line Number(s): 18
+Match String:         password: 'OhG0dPlease1nsertLiquor!'
+
+
+File: /src/test/api/deluxeApiSpec.js
+Match Position: 9 - 81
+Line Number(s): 36
+Match String:         password: 'mDLx?94T~1CfVfZMzw@sJ9f?s3L6lbMqE70FfI8^54jbNikY5fymx7c!YbJb'
+
+
+File: /src/test/api/deluxeApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 54
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/deluxeApiSpec.js
+Match Position: 9 - 47
+Line Number(s): 72
+Match String:         password: 'i am an awesome accountant'
+
+
+File: /src/test/api/deluxeApiSpec.js
+Match Position: 9 - 45
+Line Number(s): 90
+Match String:         password: 'OhG0dPlease1nsertLiquor!'
+
+
+File: /src/test/api/deluxeApiSpec.js
+Match Position: 9 - 81
+Line Number(s): 111
+Match String:         password: 'mDLx?94T~1CfVfZMzw@sJ9f?s3L6lbMqE70FfI8^54jbNikY5fymx7c!YbJb'
+
+
+File: /src/test/api/deluxeApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 132
+Match String:         password: 'admin123'
+
+
+File: /src/test/api/deluxeApiSpec.js
+Match Position: 9 - 47
+Line Number(s): 153
+Match String:         password: 'i am an awesome accountant'
+
+
+File: /src/test/api/erasureRequestApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 17
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/erasureRequestApiSpec.js
+Match Position: 17 - 65
+Line Number(s): 31
+Match String:                 password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/feedbackApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 118
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/feedbackApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 151
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/basketItemApiSpec.js
+Match Position: 7 - 27
+Line Number(s): 20
+Match String:       password: 'ncc-1701'
+
+
+File: /src/test/api/dataExportApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 20
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/dataExportApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 47
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/dataExportApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 76
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+
+File: /src/test/api/dataExportApiSpec.js
+Match Position: 9 - 45
+Line Number(s): 111
+Match String:         password: 'K1f.....................'
+
+
+File: /src/test/api/dataExportApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 151
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/dataExportApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 193
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/dataExportApiSpec.js
+Match Position: 9 - 45
+Line Number(s): 232
+Match String:         password: 'K1f.....................'
+
+
+File: /src/test/api/dataExportApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 280
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/dataExportApiSpec.js
+Match Position: 9 - 29
+Line Number(s): 330
+Match String:         password: 'ncc-1701'
+
+
+File: /src/test/api/basketApiSpec.js
+Match Position: 7 - 27
+Line Number(s): 24
+Match String:       password: 'ncc-1701'
+
+
+File: /src/test/api/basketApiSpec.js
+Match Position: 9 - 57
+Line Number(s): 100
+Match String:         password: 'bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamI='
+
+======================================================================================================
+RULE ID: yaml_deserialize
+OWASP: A8: Insecure Deserialization
+CWE: CWE-502: Deserialization of Untrusted Data
+DESCRIPTION: User controlled data in 'yaml.load()' function can result in Remote Code Injection.
+SEVERITY: ERROR
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/server.js
+Match Position: 25 - 74
+Line Number(s): 24
+Match String: const swaggerDocument = yaml.load(fs.readFileSync('./swagger.yml', 'utf8'))
+
+======================================================================================================
+RULE ID: generic_error_disclosure
+OWASP: A3: Sensitive Data Exposure
+CWE: CWE-209: Generation of Error Message Containing Sensitive Information
+DESCRIPTION: Error messages with stack traces may expose sensitive information about the application.
+SEVERITY: WARNING
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/frontend/src/assets/private/three.js
+Match Position: 3 - 24
+Line Number(s): 26880: 26901
+Match String: 		try {
+
+
+
+			var attributes = {
+
+				alpha: _alpha,
+
+				depth: _depth,
+
+				stencil: _stencil,
+
+				antialias: _antialias,
+
+				premultipliedAlpha: _premultipliedAlpha,
+
+				preserveDrawingBuffer: _preserveDrawingBuffer
+
+			};
+
+
+
+			_gl = _context || _canvas.getContext( 'webgl', attributes ) || _canvas.getContext( 'experimental-webgl', attributes );
+
+
+
+			if ( _gl === null ) {
+
+
+
+				throw 'Error creating WebGL context.';
+
+
+
+			}
+
+
+
+		} catch ( error ) {
+
+
+
+			console.error( error );
+
+
+File: /src/frontend/dist/frontend/assets/private/three.js
+Match Position: 3 - 24
+Line Number(s): 26880: 26901
+Match String: 		try {
+
+
+
+			var attributes = {
+
+				alpha: _alpha,
+
+				depth: _depth,
+
+				stencil: _stencil,
+
+				antialias: _antialias,
+
+				premultipliedAlpha: _premultipliedAlpha,
+
+				preserveDrawingBuffer: _preserveDrawingBuffer
+
+			};
+
+
+
+			_gl = _context || _canvas.getContext( 'webgl', attributes ) || _canvas.getContext( 'experimental-webgl', attributes );
+
+
+
+			if ( _gl === null ) {
+
+
+
+				throw 'Error creating WebGL context.';
+
+
+
+			}
+
+
+
+		} catch ( error ) {
+
+
+
+			console.error( error );
+
+======================================================================================================
+RULE ID: node_md5
+OWASP: A9: Using Components with Known Vulnerabilities
+CWE: CWE-327: Use of a Broken or Risky Cryptographic Algorithm
+DESCRIPTION: MD5 is a a weak hash which is known to have collision. Use a strong hashing function.
+SEVERITY: WARNING
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/Gruntfile.js
+Match Position: 19 - 42
+Line Number(s): 70
+Match String:       const md5 = crypto.createHash('md5')
+
+
+File: /src/lib/insecurity.js
+Match Position: 24 - 47
+Line Number(s): 21
+Match String: exports.hash = data => crypto.createHash('md5').update(data).digest('hex')
+
+======================================================================================================
+RULE ID: generic_cors
+OWASP: A6: Security Misconfiguration
+CWE: CWE-346: Origin Validation Error
+DESCRIPTION: Access-Control-Allow-Origin response header is set to "*". This will disable CORS Same Origin Policy restrictions.
+SEVERITY: WARNING
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/server.js
+Match Position: 1 - 22
+Line Number(s): 142
+Match String: app.options('*', cors())
+
+======================================================================================================
+RULE ID: hardcoded_jwt_secret
+OWASP: A3: Sensitive Data Exposure
+CWE: CWE-798: Use of Hard-coded Credentials
+DESCRIPTION: Hardcoded JWT secret was found
+SEVERITY: ERROR
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 1 - 8
+Line Number(s): 12: 440
+Match String: const jwt = require('jsonwebtoken')
+
+
+
+const REST_URL = 'http://localhost:3000/rest'
+
+const API_URL = 'http://localhost:3000/api'
+
+
+
+const jsonHeader = { 'content-type': 'application/json' }
+
+
+
+async function login ({ email, password, totpSecret }) {
+
+  const loginRes = await frisby
+
+    .post(REST_URL + '/user/login', {
+
+      email,
+
+      password
+
+    }).catch((res) => {
+
+      if (res.json && res.json.type && res.json.status === 'totp_token_required') {
+
+        return res
+
+      }
+
+      throw new Error(`Failed to login '${email}'`)
+
+    })
+
+
+
+  if (loginRes.json.status && loginRes.json.status === 'totp_token_required') {
+
+    const totpRes = await frisby
+
+      .post(REST_URL + '/2fa/verify', {
+
+        tmpToken: loginRes.json.data.tmpToken,
+
+        totpToken: otplib.authenticator.generate(totpSecret)
+
+      })
+
+
+
+    return totpRes.json.authentication
+
+  }
+
+
+
+  return loginRes.json.authentication
+
+}
+
+
+
+async function register ({ email, password, totpSecret }) {
+
+  const res = await frisby
+
+    .post(API_URL + '/Users/', {
+
+      email,
+
+      password,
+
+      passwordRepeat: password,
+
+      securityQuestion: null,
+
+      securityAnswer: null
+
+    }).catch(() => {
+
+      throw new Error(`Failed to register '${email}'`)
+
+    })
+
+
+
+  if (totpSecret) {
+
+    const { token } = await login({ email, password })
+
+
+
+    await frisby.post(
+
+      REST_URL + '/2fa/setup',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        },
+
+        body: {
+
+          password,
+
+          setupToken: insecurity.authorize({
+
+            secret: totpSecret,
+
+            type: 'totp_setup_secret'
+
+          }),
+
+          initialToken: otplib.authenticator.generate(totpSecret)
+
+        }
+
+      }).expect('status', 200).catch(() => {
+
+      throw new Error(`Failed to enable 2fa for user: '${email}'`)
+
+    })
+
+  }
+
+
+
+  return res
+
+}
+
+
+
+function getStatus (token) {
+
+  return frisby.get(
+
+    REST_URL + '/2fa/status',
+
+    {
+
+      headers: {
+
+        Authorization: 'Bearer ' + token,
+
+        'content-type': 'application/json'
+
+      }
+
+    })
+
+}
+
+
+
+describe('/rest/2fa/verify', () => {
+
+  it('POST should return a valid authentication when a valid tmp token is passed', async () => {
+
+    const tmpTokenWurstbrot = insecurity.authorize({
+
+      userId: 10,
+
+      type: 'password_valid_needs_second_factor_token'
+
+    })
+
+
+
+    const totpToken = otplib.authenticator.generate('IFTXE3SPOEYVURT2MRYGI52TKJ4HC3KH')
+
+
+
+    await frisby.post(REST_URL + '/2fa/verify', {
+
+      headers: jsonHeader,
+
+      body: {
+
+        tmpToken: tmpTokenWurstbrot,
+
+        totpToken
+
+      }
+
+    })
+
+      .expect('status', 200)
+
+      .expect('header', 'content-type', /application\/json/)
+
+      .expect('jsonTypes', 'authentication', {
+
+        token: Joi.string(),
+
+        umail: Joi.string(),
+
+        bid: Joi.number()
+
+      })
+
+      .expect('json', 'authentication', {
+
+        umail: `wurstbrot@${config.get('application.domain')}`
+
+      })
+
+  })
+
+
+
+  it('POST should fail if a invalid totp token is used', async () => {
+
+    const tmpTokenWurstbrot = insecurity.authorize({
+
+      userId: 10,
+
+      type: 'password_valid_needs_second_factor_token'
+
+    })
+
+
+
+    const totpToken = otplib.authenticator.generate('THIS9ISNT8THE8RIGHT8SECRET')
+
+
+
+    await frisby.post(REST_URL + '/2fa/verify', {
+
+      headers: jsonHeader,
+
+      body: {
+
+        tmpToken: tmpTokenWurstbrot,
+
+        totpToken
+
+      }
+
+    })
+
+      .expect('status', 401)
+
+  })
+
+
+
+  it('POST should fail if a unsigned tmp token is used', async () => {
+
+    const tmpTokenWurstbrot = jwt.sign({
+
+      userId: 10,
+
+      type: 'password_valid_needs_second_factor_token'
+
+    }, 'this_surly_isnt_the_right_key')
+
+
+
+    const totpToken = otplib.authenticator.generate('IFTXE3SPOEYVURT2MRYGI52TKJ4HC3KH')
+
+
+
+    await frisby.post(REST_URL + '/2fa/verify', {
+
+      headers: jsonHeader,
+
+      body: {
+
+        tmpToken: tmpTokenWurstbrot,
+
+        totpToken
+
+      }
+
+    })
+
+      .expect('status', 401)
+
+  })
+
+})
+
+
+
+describe('/rest/2fa/status', () => {
+
+  it('GET should indicate 2fa is setup for 2fa enabled users', async () => {
+
+    const { token } = await login({
+
+      email: `wurstbrot@${config.get('application.domain')}`,
+
+      password: 'EinBelegtesBrotMitSchinkenSCHINKEN!',
+
+      totpSecret: 'IFTXE3SPOEYVURT2MRYGI52TKJ4HC3KH'
+
+    })
+
+
+
+    await frisby.get(
+
+      REST_URL + '/2fa/status',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        }
+
+      })
+
+      .expect('status', 200)
+
+      .expect('header', 'content-type', /application\/json/)
+
+      .expect('jsonTypes', {
+
+        setup: Joi.boolean()
+
+      })
+
+      .expect('json', {
+
+        setup: true
+
+      })
+
+  })
+
+
+
+  it('GET should indicate 2fa is not setup for users with 2fa disabled', async () => {
+
+    const { token } = await login({
+
+      email: `J12934@${config.get('application.domain')}`,
+
+      password: '0Y8rMnww$*9VFYE§59-!Fg1L6t&6lB'
+
+    })
+
+
+
+    await frisby.get(
+
+      REST_URL + '/2fa/status',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        }
+
+      })
+
+      .expect('status', 200)
+
+      .expect('header', 'content-type', /application\/json/)
+
+      .expect('jsonTypes', {
+
+        setup: Joi.boolean(),
+
+        secret: Joi.string(),
+
+        email: Joi.string(),
+
+        setupToken: Joi.string()
+
+      })
+
+      .expect('json', {
+
+        setup: false,
+
+        email: `J12934@${config.get('application.domain')}`
+
+      })
+
+  })
+
+
+
+  it('GET should return 401 when not logged in', async () => {
+
+    await frisby.get(REST_URL + '/2fa/status')
+
+      .expect('status', 401)
+
+  })
+
+})
+
+
+
+describe('/rest/2fa/setup', () => {
+
+  it('POST should be able to setup 2fa for accounts without 2fa enabled', async () => {
+
+    const email = 'fooooo1@bar.com'
+
+    const password = '123456'
+
+
+
+    const secret = 'ASDVAJSDUASZGDIADBJS'
+
+
+
+    await register({ email, password })
+
+    const { token } = await login({ email, password })
+
+
+
+    await frisby.post(
+
+      REST_URL + '/2fa/setup',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        },
+
+        body: {
+
+          password,
+
+          setupToken: insecurity.authorize({
+
+            secret,
+
+            type: 'totp_setup_secret'
+
+          }),
+
+          initialToken: otplib.authenticator.generate(secret)
+
+        }
+
+      })
+
+      .expect('status', 200)
+
+
+
+    await frisby.get(
+
+      REST_URL + '/2fa/status',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        }
+
+      })
+
+      .expect('status', 200)
+
+      .expect('jsonTypes', {
+
+        setup: Joi.boolean()
+
+      })
+
+      .expect('json', {
+
+        setup: true
+
+      })
+
+  })
+
+
+
+  it('POST should fail if the password doesnt match', async () => {
+
+    const email = 'fooooo2@bar.com'
+
+    const password = '123456'
+
+
+
+    const secret = 'ASDVAJSDUASZGDIADBJS'
+
+
+
+    await register({ email, password })
+
+    const { token } = await login({ email, password })
+
+
+
+    await frisby.post(
+
+      REST_URL + '/2fa/setup',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        },
+
+        body: {
+
+          password: password + ' this makes the password wrong',
+
+          setupToken: insecurity.authorize({
+
+            secret,
+
+            type: 'totp_setup_secret'
+
+          }),
+
+          initialToken: otplib.authenticator.generate(secret)
+
+        }
+
+      })
+
+      .expect('status', 401)
+
+  })
+
+
+
+  it('POST should fail if the inital token is incorrect', async () => {
+
+    const email = 'fooooo3@bar.com'
+
+    const password = '123456'
+
+
+
+    const secret = 'ASDVAJSDUASZGDIADBJS'
+
+
+
+    await register({ email, password })
+
+    const { token } = await login({ email, password })
+
+
+
+    await frisby.post(
+
+      REST_URL + '/2fa/setup',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        },
+
+        body: {
+
+          password: password,
+
+          setupToken: insecurity.authorize({
+
+            secret,
+
+            type: 'totp_setup_secret'
+
+          }),
+
+          initialToken: otplib.authenticator.generate(secret + 'ASJDVASGDKASVDUAGS')
+
+        }
+
+      })
+
+      .expect('status', 401)
+
+  })
+
+
+
+  it('POST should fail if the token is of the wrong type', async () => {
+
+    const email = 'fooooo4@bar.com'
+
+    const password = '123456'
+
+
+
+    const secret = 'ASDVAJSDUASZGDIADBJS'
+
+
+
+    await register({ email, password })
+
+    const { token } = await login({ email, password })
+
+
+
+    await frisby.post(
+
+      REST_URL + '/2fa/setup',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        },
+
+        body: {
+
+          password,
+
+          setupToken: insecurity.authorize({
+
+            secret,
+
+            type: 'totp_setup_secret_foobar'
+
+          }),
+
+          initialToken: otplib.authenticator.generate(secret)
+
+        }
+
+      })
+
+      .expect('status', 401)
+
+  })
+
+
+
+  it('POST should fail if the account has already set up 2fa', async () => {
+
+    const email = `wurstbrot@${config.get('application.domain')}`
+
+    const password = 'EinBelegtesBrotMitSchinkenSCHINKEN!'
+
+    const totpSecret = 'IFTXE3SPOEYVURT2MRYGI52TKJ4HC3KH'
+
+
+
+    const { token } = await login({ email, password, totpSecret })
+
+
+
+    await frisby.post(
+
+      REST_URL + '/2fa/setup',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        },
+
+        body: {
+
+          password,
+
+          setupToken: insecurity.authorize({
+
+            secret: totpSecret,
+
+            type: 'totp_setup_secret'
+
+          }),
+
+          initialToken: otplib.authenticator.generate(totpSecret)
+
+        }
+
+      })
+
+      .expect('status', 401)
+
+  })
+
+})
+
+
+
+describe('/rest/2fa/disable', () => {
+
+  it('POST should be able to disable 2fa for account with 2fa enabled', async () => {
+
+    const email = 'fooooodisable1@bar.com'
+
+    const password = '123456'
+
+    const totpSecret = 'ASDVAJSDUASZGDIADBJS'
+
+
+
+    await register({ email, password, totpSecret })
+
+    const { token } = await login({ email, password, totpSecret })
+
+
+
+    await getStatus(token)
+
+      .expect('status', 200)
+
+      .expect('json', {
+
+        setup: true
+
+      })
+
+
+
+    await frisby.post(
+
+      REST_URL + '/2fa/disable',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        },
+
+        body: {
+
+          password
+
+        }
+
+      }
+
+    ).expect('status', 200)
+
+
+
+    await getStatus(token)
+
+      .expect('status', 200)
+
+      .expect('json', {
+
+        setup: false
+
+      })
+
+  })
+
+
+
+  it('POST should not be possible to disable 2fa without the correct password', async () => {
+
+    const email = 'fooooodisable1@bar.com'
+
+    const password = '123456'
+
+    const totpSecret = 'ASDVAJSDUASZGDIADBJS'
+
+
+
+    await register({ email, password, totpSecret })
+
+    const { token } = await login({ email, password, totpSecret })
+
+
+
+    await getStatus(token)
+
+      .expect('status', 200)
+
+      .expect('json', {
+
+        setup: true
+
+      })
+
+
+
+    await frisby.post(
+
+      REST_URL + '/2fa/disable',
+
+      {
+
+        headers: {
+
+          Authorization: 'Bearer ' + token,
+
+          'content-type': 'application/json'
+
+        },
+
+        body: {
+
+          password: password + ' this makes the password wrong'
+
+        }
+
+      }
+
+    ).expect('status', 401)
+
+
+
+    await getStatus(token)
+
+      .expect('status', 200)
+
+      .expect('json', {
+
+        setup: true
+
+      })
+
+
+File: /src/lib/insecurity.js
+Match Position: 1 - 7
+Line Number(s): 9: 177
+Match String: const jwt = require('jsonwebtoken')
+
+const jws = require('jws')
+
+const sanitizeHtml = require('sanitize-html')
+
+const sanitizeFilename = require('sanitize-filename')
+
+const z85 = require('z85')
+
+const utils = require('./utils')
+
+const fs = require('fs')
+
+
+
+const publicKey = fs.readFileSync('encryptionkeys/jwt.pub', 'utf8')
+
+module.exports.publicKey = publicKey
+
+const privateKey = '-----BEGIN RSA PRIVATE KEY-----\r\nMIICXAIBAAKBgQDNwqLEe9wgTXCbC7+RPdDbBbeqjdbs4kOPOIGzqLpXvJXlxxW8iMz0EaM4BKUqYsIa+ndv3NAn2RxCd5ubVdJJcX43zO6Ko0TFEZx/65gY3BE0O6syCEmUP4qbSd6exou/F+WTISzbQ5FBVPVmhnYhG/kpwt/cIxK5iUn5hm+4tQIDAQABAoGBAI+8xiPoOrA+KMnG/T4jJsG6TsHQcDHvJi7o1IKC/hnIXha0atTX5AUkRRce95qSfvKFweXdJXSQ0JMGJyfuXgU6dI0TcseFRfewXAa/ssxAC+iUVR6KUMh1PE2wXLitfeI6JLvVtrBYswm2I7CtY0q8n5AGimHWVXJPLfGV7m0BAkEA+fqFt2LXbLtyg6wZyxMA/cnmt5Nt3U2dAu77MzFJvibANUNHE4HPLZxjGNXN+a6m0K6TD4kDdh5HfUYLWWRBYQJBANK3carmulBwqzcDBjsJ0YrIONBpCAsXxk8idXb8jL9aNIg15Wumm2enqqObahDHB5jnGOLmbasizvSVqypfM9UCQCQl8xIqy+YgURXzXCN+kwUgHinrutZms87Jyi+D8Br8NY0+Nlf+zHvXAomD2W5CsEK7C+8SLBr3k/TsnRWHJuECQHFE9RA2OP8WoaLPuGCyFXaxzICThSRZYluVnWkZtxsBhW2W8z1b8PvWUE7kMy7TnkzeJS2LSnaNHoyxi7IaPQUCQCwWU4U+v4lD7uYBw00Ga/xt+7+UqFPlPVdz1yyr4q24Zxaw0LgmuEvgU5dycq8N7JxjTubX0MIRR+G9fmDBBl8=\r\n-----END RSA PRIVATE KEY-----'
+
+
+
+exports.hash = data => crypto.createHash('md5').update(data).digest('hex')
+
+exports.hmac = data => crypto.createHmac('sha256', 'pa4qacea4VK9t9nGv7yZtwmj').update(data).digest('hex')
+
+
+
+exports.cutOffPoisonNullByte = str => {
+
+  const nullByte = '%00'
+
+  if (utils.contains(str, nullByte)) {
+
+    return str.substring(0, str.indexOf(nullByte))
+
+  }
+
+  return str
+
+}
+
+
+
+exports.isAuthorized = () => expressJwt({ secret: this.publicKey })
+
+exports.denyAll = () => expressJwt({ secret: '' + Math.random() })
+
+exports.authorize = (user = {}) => jwt.sign(user, privateKey, { expiresInMinutes: 60 * 5, algorithm: 'RS256' })
+
+exports.verify = (token) => jws.verify(token, publicKey)
+
+exports.decode = (token) => { return jws.decode(token).payload }
+
+
+
+exports.sanitizeHtml = html => sanitizeHtml(html)
+
+exports.sanitizeLegacy = (input = '') => input.replace(/<(?:\w+)\W+?[\w]/gi, '')
+
+exports.sanitizeFilename = filename => sanitizeFilename(filename)
+
+exports.sanitizeSecure = html => {
+
+  const sanitized = this.sanitizeHtml(html)
+
+  if (sanitized === html) {
+
+    return html
+
+  } else {
+
+    return this.sanitizeSecure(sanitized)
+
+  }
+
+}
+
+
+
+exports.authenticatedUsers = {
+
+  tokenMap: {},
+
+  idMap: {},
+
+  put: function (token, user) {
+
+    this.tokenMap[token] = user
+
+    this.idMap[user.data.id] = token
+
+  },
+
+  get: function (token) {
+
+    return token ? this.tokenMap[utils.unquote(token)] : undefined
+
+  },
+
+  tokenOf: function (user) {
+
+    return user ? this.idMap[user.id] : undefined
+
+  },
+
+  from: function (req) {
+
+    const token = utils.jwtFrom(req)
+
+    return token ? this.get(token) : undefined
+
+  },
+
+  updateFrom: function (req, user) {
+
+    const token = utils.jwtFrom(req)
+
+    this.put(token, user)
+
+  }
+
+}
+
+
+
+exports.userEmailFrom = ({ headers }) => {
+
+  return headers ? headers['x-user-email'] : undefined
+
+}
+
+
+
+exports.generateCoupon = (discount, date = new Date()) => {
+
+  const coupon = utils.toMMMYY(date) + '-' + discount
+
+  return z85.encode(coupon)
+
+}
+
+
+
+exports.discountFromCoupon = coupon => {
+
+  if (coupon) {
+
+    const decoded = z85.decode(coupon)
+
+    if (decoded && hasValidFormat(decoded.toString())) {
+
+      const parts = decoded.toString().split('-')
+
+      const validity = parts[0]
+
+      if (utils.toMMMYY(new Date()) === validity) {
+
+        const discount = parts[1]
+
+        return parseInt(discount)
+
+      }
+
+    }
+
+  }
+
+  return undefined
+
+}
+
+
+
+function hasValidFormat (coupon) {
+
+  return coupon.match(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)[0-9]{2}-[0-9]{2}/)
+
+}
+
+
+
+const redirectWhitelist = new Set([
+
+  'https://github.com/bkimminich/juice-shop',
+
+  'https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm',
+
+  'https://explorer.dash.org/address/Xr556RzuwX6hg5EGpkybbv5RanJoZN17kW',
+
+  'https://etherscan.io/address/0x0f933ab9fcaaa782d0279c300d73750e1311eae6',
+
+  'http://shop.spreadshirt.com/juiceshop',
+
+  'http://shop.spreadshirt.de/juiceshop',
+
+  'https://www.stickeryou.com/products/owasp-juice-shop/794',
+
+  'http://leanpub.com/juice-shop'
+
+])
+
+exports.redirectWhitelist = redirectWhitelist
+
+
+
+exports.isRedirectAllowed = url => {
+
+  let allowed = false
+
+  for (const allowedUrl of redirectWhitelist) {
+
+    allowed = allowed || url.includes(allowedUrl)
+
+  }
+
+  return allowed
+
+}
+
+
+
+exports.roles = {
+
+  customer: 'customer',
+
+  deluxe: 'deluxe',
+
+  accounting: 'accounting',
+
+  admin: 'admin'
+
+}
+
+
+
+exports.deluxeToken = (email) => {
+
+  const hmac = crypto.createHmac('sha256', privateKey)
+
+  return hmac.update(email + this.roles.deluxe).digest('hex')
+
+}
+
+
+
+exports.isAccounting = () => {
+
+  return (req, res, next) => {
+
+    const decodedToken = this.verify(utils.jwtFrom(req)) && this.decode(utils.jwtFrom(req))
+
+    if (decodedToken && decodedToken.data && decodedToken.data.role === exports.roles.accounting) {
+
+      next()
+
+    } else {
+
+      res.status(403).json({ error: 'Malicious activity detected' })
+
+    }
+
+  }
+
+}
+
+
+
+exports.isDeluxe = (req) => {
+
+  const decodedToken = this.verify(utils.jwtFrom(req)) && this.decode(utils.jwtFrom(req))
+
+  return decodedToken && decodedToken.data && decodedToken.data.role === exports.roles.deluxe && decodedToken.data.deluxeToken && decodedToken.data.deluxeToken === this.deluxeToken(decodedToken.data.email)
+
+}
+
+
+
+exports.isCustomer = (req) => {
+
+  const decodedToken = this.verify(utils.jwtFrom(req)) && this.decode(utils.jwtFrom(req))
+
+  return decodedToken && decodedToken.data && decodedToken.data.role === exports.roles.customer
+
+}
+
+
+
+exports.appendUserId = () => {
+
+  return (req, res, next) => {
+
+    try {
+
+      req.body.UserId = this.authenticatedUsers.tokenMap[utils.jwtFrom(req)].data.id
+
+      next()
+
+    } catch (error) {
+
+      res.status(401).json({ status: 'error', message: error })
+
+    }
+
+  }
+
+}
+
+
+
+exports.updateAuthenticatedUsers = () => (req, res, next) => {
+
+  const token = utils.jwtFrom(req) || req.cookies.token
+
+  if (token) {
+
+    jwt.verify(token, publicKey, (err, decoded) => {
+
+      if (err === null) {
+
+        if (this.authenticatedUsers.get(token) === undefined) {
+
+          this.authenticatedUsers.put(token, decoded)
+
+          res.cookie('token', token)
+
+        }
+
+      }
+
+    })
+
+  }
+
+  next()
+
+======================================================================================================
+RULE ID: node_secret
+OWASP: A3: Sensitive Data Exposure
+CWE: CWE-798: Use of Hard-coded Credentials
+DESCRIPTION: A hardcoded secret is identified. Store it properly in an environment variable.
+SEVERITY: ERROR
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 42
+Line Number(s): 223
+Match String:     const secret = 'ASDVAJSDUASZGDIADBJS'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 42
+Line Number(s): 267
+Match String:     const secret = 'ASDVAJSDUASZGDIADBJS'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 42
+Line Number(s): 295
+Match String:     const secret = 'ASDVAJSDUASZGDIADBJS'
+
+
+File: /src/test/api/2faSpec.js
+Match Position: 5 - 42
+Line Number(s): 323
+Match String:     const secret = 'ASDVAJSDUASZGDIADBJS'
+
+======================================================================================================
+RULE ID: node_sqli_injection
+OWASP: A1: Injection
+CWE: CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+DESCRIPTION: Untrusted input concatinated with raw SQL query can result in SQL Injection.
+SEVERITY: ERROR
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/routes/login.js
+Match Position: 5 - 209
+Line Number(s): 29
+Match String:     models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${insecurity.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: models.User, plain: true })
+
+
+File: /src/routes/search.js
+Match Position: 5 - 19
+Line Number(s): 12: 57
+Match String:     let criteria = req.query.q === 'undefined' ? '' : req.query.q || ''
+
+    criteria = (criteria.length <= 200) ? criteria : criteria.substring(0, 200)
+
+    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
+
+      .then(([products]) => {
+
+        const dataString = JSON.stringify(products)
+
+        if (utils.notSolved(challenges.unionSqlInjectionChallenge)) {
+
+          let solved = true
+
+          models.User.findAll().then(data => {
+
+            const users = utils.queryResultToJson(data)
+
+            if (users.data && users.data.length) {
+
+              for (let i = 0; i < users.data.length; i++) {
+
+                solved = solved && utils.containsOrEscaped(dataString, users.data[i].email) && utils.contains(dataString, users.data[i].password)
+
+                if (!solved) {
+
+                  break
+
+                }
+
+              }
+
+              if (solved) {
+
+                utils.solve(challenges.unionSqlInjectionChallenge)
+
+              }
+
+            }
+
+          })
+
+        }
+
+        if (utils.notSolved(challenges.dbSchemaChallenge)) {
+
+          let solved = true
+
+          models.sequelize.query('SELECT sql FROM sqlite_master').then(([data]) => {
+
+            const tableDefinitions = utils.queryResultToJson(data)
+
+            if (tableDefinitions.data && tableDefinitions.data.length) {
+
+              for (let i = 0; i < tableDefinitions.data.length; i++) {
+
+                solved = solved && utils.containsOrEscaped(dataString, tableDefinitions.data[i].sql)
+
+                if (!solved) {
+
+                  break
+
+                }
+
+              }
+
+              if (solved) {
+
+                utils.solve(challenges.dbSchemaChallenge)
+
+              }
+
+            }
+
+          })
+
+        }
+
+        for (let i = 0; i < products.length; i++) {
+
+          products[i].name = req.__(products[i].name)
+
+          products[i].description = req.__(products[i].description)
+
+        }
+
+        res.json(utils.queryResultToJson(products))
+
+      }).catch(error => {
+
+        next(error)
+
+======================================================================================================
+RULE ID: node_nosqli_js_injection
+OWASP: A1: Injection
+CWE: CWE-943: Improper Neutralization of Special Elements in Data Query Logic
+DESCRIPTION: Untrusted user input in MongoDB $where operator can result in NoSQL JavaScript Injection.
+SEVERITY: ERROR
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/routes/trackOrder.js
+Match Position: 5 - 52
+Line Number(s): 12: 23
+Match String:     const id = utils.disableOnContainerEnv() ? String(req.params.id).replace(/[^\w-]+/g, '') : req.params.id
+
+
+
+    utils.solveIf(challenges.reflectedXssChallenge, () => { return utils.contains(id, '<iframe src="javascript:alert(`xss`)">') })
+
+    db.orders.find({ $where: `this.orderId === '${id}'` }).then(order => {
+
+      const result = utils.queryResultToJson(order)
+
+      utils.solveIf(challenges.noSqlOrdersChallenge, () => { return result.data.length > 1 })
+
+      if (result.data[0] === undefined) {
+
+        result.data[0] = { orderId: id }
+
+      }
+
+      res.json(result)
+
+    }, () => {
+
+      res.status(400).json({ error: 'Wrong Param' })
+
+
+File: /src/routes/showProductReviews.js
+Match Position: 5 - 53
+Line Number(s): 25: 40
+Match String:     const id = utils.disableOnContainerEnv() ? Number(req.params.id) : req.params.id
+
+
+
+    // Measure how long the query takes to find out if an there was a nosql dos attack
+
+    const t0 = new Date().getTime()
+
+    db.reviews.find({ $where: 'this.product == ' + id }).then(reviews => {
+
+      const t1 = new Date().getTime()
+
+      utils.solveIf(challenges.noSqlCommandChallenge, () => { return (t1 - t0) > 2000 })
+
+      const user = insecurity.authenticatedUsers.from(req)
+
+      for (var i = 0; i < reviews.length; i++) {
+
+        if (user === undefined || reviews[i].likedBy.includes(user.data.email)) {
+
+          reviews[i].liked = true
+
+        }
+
+      }
+
+      res.json(utils.queryResultToJson(reviews))
+
+    }, () => {
+
+      res.status(400).json({ error: 'Wrong Params' })
+
+======================================================================================================
+RULE ID: node_nosqli_injection
+OWASP: A1: Injection
+CWE: CWE-943: Improper Neutralization of Special Elements in Data Query Logic
+DESCRIPTION: Untrusted user input in findOne() function can result in NoSQL Injection.
+SEVERITY: ERROR
+======================================================================================================
+
+__________________FILES___________________________
+
+
+File: /src/routes/likeProductReviews.js
+Match Position: 5 - 53
+Line Number(s): 13: 55
+Match String:     const id = req.body.id
+
+    const user = insecurity.authenticatedUsers.from(req)
+
+    db.reviews.findOne({ _id: id }).then(review => {
+
+      var likedBy = review.likedBy
+
+      if (!likedBy.includes(user.data.email)) {
+
+        db.reviews.update(
+
+          { _id: id },
+
+          { $inc: { likesCount: 1 } }
+
+        ).then(
+
+          result => {
+
+            // Artificial wait for timing attack challenge
+
+            setTimeout(function () {
+
+              db.reviews.findOne({ _id: id }).then(review => {
+
+                var likedBy = review.likedBy
+
+                likedBy.push(user.data.email)
+
+                var count = 0
+
+                for (var i = 0; i < likedBy.length; i++) {
+
+                  if (likedBy[i] === user.data.email) {
+
+                    count++
+
+                  }
+
+                }
+
+                utils.solveIf(challenges.timingAttackChallenge, () => { return count > 2 })
+
+                db.reviews.update(
+
+                  { _id: id },
+
+                  { $set: { likedBy: likedBy } }
+
+                ).then(
+
+                  result => {
+
+                    res.json(result)
+
+                  }, err => {
+
+                    res.status(500).json(err)
+
+                  })
+
+              }, () => {
+
+                res.status(400).json({ error: 'Wrong Params' })
+
+              })
+
+            }, 150)
+
+          }, err => {
+
+            res.status(500).json(err)
+
+          })
+
+      } else {
+
+        res.status(403).json({ error: 'Not allowed' })
+
+      }
+
+    }, () => {
+
+      res.status(400).json({ error: 'Wrong Params' })

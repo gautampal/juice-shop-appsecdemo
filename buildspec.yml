@@ -1,0 +1,46 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+      docker: 18
+  pre_build:
+    commands:
+      - pip install trufflehog
+      - docker pull opensecurity/njsscan
+      - docker pull owasp/zap2docker-weekly
+      - curl -Lo /usr/local/bin/snyk "https://github.com/snyk/snyk/releases/latest/download/snyk-linux"
+      - chmod +x /usr/local/bin/snyk
+      - yum -y install net-tools nc
+      - ifconfig -a
+      - docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
+  build:
+    commands:
+      # RUN Codebuild locally
+      # git clone https://github.com/aws/aws-codebuild-docker-images.git
+      # cd aws-codebuild-docker-images/al2/x86_64/standard/3.0
+      # docker build -t aws/codebuild/amazonlinux2-x86_64-standard:3.0 .
+      # cd <back here>
+      # wget https://raw.githubusercontent.com/aws/aws-codebuild-docker-images/master/local_builds/codebuild_build.sh
+      # ./codebuild_build.sh -i aws/codebuild/amazonlinux2-x86_64-standard:3.0 -a output -d
+      # RUN Secrets detection (best run pre-commit too)
+      # TODO: Max depth limited to demonstrate capability and disabled breakbuild
+      - trufflehog --regex --entropy=False --max_depth 1 . >secrets.out || true
+      # RUN SAST TODO: Scoped to server.js to demonstrate capability
+      - docker run -v "$(pwd)":/src opensecurity/njsscan /src/server.js >sast.out || true
+      # RUN Build
+      - npm install
+      # RUN DAST (disabled breakbuild)
+      - npm start &
+      - while ! nc -z "$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q))" 3000; do sleep 0.5; done
+      - docker run -v $(pwd):/zap/wrk/:rw owasp/zap2docker-weekly zap-baseline.py -t http://$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)):3000 -r baseline-scan-report.html || true
+      # RUN SCA and Container security
+      #- snyk monitor --project-name=$(echo ${CODEBUILD_BUILD_ID} | cut -d':' -f1)
+      #- docker build --rm -t $(echo ${CODEBUILD_BUILD_ID} | cut -d':' -f1) .
+      #- snyk monitor --docker $(echo ${CODEBUILD_BUILD_ID} | cut -d':' -f1)
+
+artifacts:
+  files:
+    - '*.html'
+    - '*.out'
+base-directory: .
