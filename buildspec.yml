@@ -7,13 +7,15 @@ phases:
   pre_build:
     commands:
       - pip install trufflehog
+      - pip install njsscan
       - docker pull opensecurity/njsscan
       - docker pull owasp/zap2docker-weekly
       - curl -Lo /usr/local/bin/snyk "https://github.com/snyk/snyk/releases/latest/download/snyk-linux"
       - chmod +x /usr/local/bin/snyk
       - yum -y install net-tools nc
-      - ifconfig eth0 | grep "inet " | cut -d " " -f2
+      - ifconfig -a
       - docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
+      - ls
   build:
     commands:
       # RUN Codebuild locally
@@ -24,16 +26,16 @@ phases:
       # wget https://raw.githubusercontent.com/aws/aws-codebuild-docker-images/master/local_builds/codebuild_build.sh
       # ./codebuild_build.sh -i aws/codebuild/amazonlinux2-x86_64-standard:3.0 -a output -d
       # RUN Secrets detection (best run pre-commit too)
-      # TODO: Max depth limited to demonstrate capability and disabled breakbuild
-      - trufflehog --regex --entropy=False --max_depth 1 . >secrets.out || true
+      # TODO: Disabled breakbuild
+      - trufflehog --regex --entropy=False . | tee secrets.out || true
       # RUN SAST TODO: Scoped to server.js to demonstrate capability
-      - docker run -v "$(pwd)":/src opensecurity/njsscan /src/server.js >sast.out || true
+      - njsscan -o sast_results.out "$(pwd)/server.js" | tee sast.out || true
       # RUN Build
       - npm install
       # RUN DAST (disabled breakbuild)
       - npm start &
-      - while ! nc -z "$(ifconfig eth0 | grep "inet " | cut -d " " -f2)" 3000; do sleep 0.5; done
-      - docker run -v $(pwd):/zap/wrk/:rw owasp/zap2docker-weekly zap-baseline.py -t http://$(ifconfig eth0 | grep "inet " | cut -d " " -f2):3000 -r baseline-scan-report.html || true
+      - while ! nc -z "$(ifconfig eth0 | grep "inet " | tr -s ' ' | cut -d " " -f3)" 3000; do sleep 0.5; done
+      - docker run --user $(id -u):$(id -g) -v $(pwd):/zap/wrk/:rw owasp/zap2docker-weekly zap-baseline.py -t http://$(ifconfig eth0 | grep "inet " | tr -s ' ' | cut -d " " -f3):3000 -r baseline-scan-report.html
       # RUN SCA and Container security
       #- snyk monitor --project-name=$(echo ${CODEBUILD_BUILD_ID} | cut -d':' -f1)
       #- docker build --rm -t $(echo ${CODEBUILD_BUILD_ID} | cut -d':' -f1) .
